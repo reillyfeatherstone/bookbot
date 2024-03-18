@@ -2,8 +2,9 @@ def main():
     # path = input("Please enter the path to the book: ")
     path = "books/frankenstein.txt"
     text = get_text(path)
-    wc = get_word_count(text)
-    print(wc)
+    word_count = get_word_count(text)
+    char_count = get_char_count(text)
+    print(word_count)
     exit()
 
 def get_text(path):
@@ -16,6 +17,18 @@ def get_text(path):
         return main()
 
 def get_word_count(text):
-    return (len(text.split()))
+    return len(text.split())
+
+def get_char_count(text):
+    text = text.lower()
+    chars = {}
+
+    for c in text:
+        if c in chars:
+            chars[c] += 1
+        else:
+            chars[c] = 1
+    return chars
+    
 
 main()
